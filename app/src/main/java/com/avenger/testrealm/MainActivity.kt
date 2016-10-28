@@ -15,12 +15,16 @@ class MainActivity : AppCompatActivity() {
         Realm.init(this)
 
         Timber.d("RealmDBConfigMediator???")
-        val config = RealmConfiguration.Builder().name("test.realm")
-                                                 .schemaVersion(2L)
-                                                 .modules(RealmDBConfig())
-                                                 .deleteRealmIfMigrationNeeded()
-                                                 .build()
-        Realm.setDefaultConfiguration(config)
+//        val config = RealmConfiguration.Builder().name("test.realm")
+//                                                 .schemaVersion(2L)
+//                                                 .modules(RealmDBConfig())
+//                                                 .deleteRealmIfMigrationNeeded()
+//                                                 .build()
+//        Realm.setDefaultConfiguration(config)
         val realm = Realm.getDefaultInstance()
+        realm.executeTransaction {
+            val ob = realm.createObject(TestRealm::class.java)
+            ob.name = "John"
+        }
     }
 }
