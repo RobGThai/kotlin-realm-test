@@ -9,7 +9,6 @@ apply plugin: 'realm-android'
 android {
     compileSdkVersion 25
     buildToolsVersion "24.0.2"
-    compileOptions.incremental = false
     defaultConfig {
         applicationId "com.avenger.testrealm"
         minSdkVersion 19
